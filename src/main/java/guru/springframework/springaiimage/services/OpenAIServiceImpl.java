@@ -3,7 +3,7 @@ package guru.springframework.springaiimage.services;
 import guru.springframework.springaiimage.model.Question;
 import lombok.RequiredArgsConstructor;
 import org.springframework.ai.image.ImagePrompt;
-import org.springframework.ai.openai.OpenAiImageClient;
+import org.springframework.ai.openai.OpenAiImageModel;
 import org.springframework.ai.openai.OpenAiImageOptions;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -17,7 +17,7 @@ import java.util.Base64;
 @Service
 public class OpenAIServiceImpl implements OpenAIService {
 
-    final OpenAiImageClient imageClient;
+    final OpenAiImageModel imageModel;
 
     @Override
     public String getDescription(MultipartFile file) {
@@ -37,7 +37,7 @@ public class OpenAIServiceImpl implements OpenAIService {
 
         ImagePrompt imagePrompt = new ImagePrompt(question.question(), options);
 
-        var imageResponse = imageClient.call(imagePrompt);
+        var imageResponse = imageModel.call(imagePrompt);
 
         return Base64.getDecoder().decode(imageResponse.getResult().getOutput().getB64Json());
     }
