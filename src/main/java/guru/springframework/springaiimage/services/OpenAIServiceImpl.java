@@ -2,7 +2,7 @@ package guru.springframework.springaiimage.services;
 
 import guru.springframework.springaiimage.model.Question;
 import lombok.RequiredArgsConstructor;
-import org.springframework.ai.image.ImageClient;
+import org.springframework.ai.image.ImageModel;
 import org.springframework.ai.image.ImageOptionsBuilder;
 import org.springframework.ai.image.ImagePrompt;
 import org.springframework.stereotype.Service;
@@ -16,7 +16,7 @@ import java.util.Base64;
 @Service
 public class OpenAIServiceImpl implements OpenAIService {
 
-    final ImageClient imageClient;
+    final ImageModel imageModel;
 
     @Override
     public byte[] getImage(Question question) {
@@ -29,9 +29,8 @@ public class OpenAIServiceImpl implements OpenAIService {
 
         ImagePrompt imagePrompt = new ImagePrompt(question.question(), options);
 
-        var imageResponse = imageClient.call(imagePrompt);
-
-        return Base64.getDecoder().decode(imageResponse.getResult().getOutput().getB64Json());
+        var imageResponse = imageModel.call(imagePrompt);
+       return Base64.getDecoder().decode(imageResponse.getResult().getOutput().getB64Json());
     }
 }
 
