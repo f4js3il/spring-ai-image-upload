@@ -3,9 +3,7 @@ package guru.springframework.springaiimage.services;
 import guru.springframework.springaiimage.model.Question;
 import lombok.RequiredArgsConstructor;
 import org.springframework.ai.image.ImageModel;
-import org.springframework.ai.image.ImageOptionsBuilder;
 import org.springframework.ai.image.ImagePrompt;
-import org.springframework.ai.openai.OpenAiImageClient;
 import org.springframework.ai.openai.OpenAiImageOptions;
 import org.springframework.stereotype.Service;
 
