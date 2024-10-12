@@ -4,7 +4,6 @@ import guru.springframework.springaiimage.model.Question;
 import lombok.RequiredArgsConstructor;
 import org.springframework.ai.image.ImageModel;
 import org.springframework.ai.image.ImagePrompt;
-import org.springframework.ai.openai.OpenAiImageModel;
 import org.springframework.ai.openai.OpenAiImageOptions;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -18,7 +17,7 @@ import java.util.Base64;
 @Service
 public class OpenAIServiceImpl implements OpenAIService {
 
-    final OpenAiImageModel imageModel;
+    final ImageModel imageModel;
 
     @Override
     public String getDescription(MultipartFile file) {
