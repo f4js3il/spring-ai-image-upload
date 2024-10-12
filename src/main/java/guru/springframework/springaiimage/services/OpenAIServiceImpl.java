@@ -16,7 +16,7 @@ import java.util.Base64;
 @Service
 public class OpenAIServiceImpl implements OpenAIService {
 
-    final ImageModel imageModel;
+    private final ImageModel imageModel;
 
     @Override
     public byte[] getImage(Question question) {
@@ -32,7 +32,8 @@ public class OpenAIServiceImpl implements OpenAIService {
         ImagePrompt imagePrompt = new ImagePrompt(question.question(), options);
 
         var imageResponse = imageModel.call(imagePrompt);
-       return Base64.getDecoder().decode(imageResponse.getResult().getOutput().getB64Json());
+
+        return Base64.getDecoder().decode(imageResponse.getResult().getOutput().getB64Json());
     }
 }
 
