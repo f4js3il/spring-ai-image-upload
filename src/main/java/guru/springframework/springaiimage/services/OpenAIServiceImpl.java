@@ -33,7 +33,7 @@ public class OpenAIServiceImpl implements OpenAIService {
     public String getDescription(MultipartFile file) {
 
         OpenAiChatOptions options = OpenAiChatOptions.builder()
-//                .withModel(OpenAiApi.ChatModel.GPT_4_O.getValue())
+                .model(OpenAiApi.ChatModel.GPT_4_O.getValue())
                 .build();
 
         var userMessage = new UserMessage("Explain what do you see in this picture?",
